@@ -1,0 +1,125 @@
+<!--meta {"path": "service/notfall", "title": "Notfall & Schadensmeldung | dp immobilien management", "description": "Notfall in Ihrer Wohnanlage? Unsere Notfallnummer 0151-29707877 ist auch außerhalb der Geschäftszeiten erreichbar. Mit dem Schadensmelder finden Sie den richtigen Weg.", "nav": "service", "crumbs": [["Service", "/service/notfall"], ["Notfall & Schadensmeldung", "/service/notfall"]]} -->
+
+<section class="section section--band" style="padding-block:clamp(40px,6vw,80px)">
+  <div class="wrap grid-2" style="align-items:center">
+    <div class="stack">
+      <nav class="breadcrumb" aria-label="Brotkrumen" style="color:var(--band-muted)"><ol><li><a href="/" style="color:var(--band-muted)">Start</a></li><li aria-current="page">Notfall &amp; Schadensmeldung</li></ol></nav>
+      <span class="eyebrow">Notfall</span>
+      <h1 style="color:var(--band-ink)">Schnelle Hilfe – auch außerhalb der Geschäftszeiten</h1>
+      <p>In dringenden Notfällen erreichen Sie uns auch außerhalb der normalen Geschäftszeiten unter folgender Nummer:</p>
+      <a class="big-number" href="tel:+4915129707877">0151-29707877</a>
+      <p>Während der Geschäftszeiten (Mo–Fr 09.00 – 12.00 Uhr, Di + Do 14.00 – 16.00 Uhr) erreichen Sie uns unter <a href="tel:+4969403562400" style="color:var(--band-ink)">069 / 4035624 - 00</a>.</p>
+    </div>
+    <div class="stack">
+      <div class="result result--alert" style="background:rgb(255 255 255 / .06)">
+        <h2 style="font-size:var(--step-1);color:#ff8f86">Bei Gefahr für Leib und Leben zuerst den Notruf wählen</h2>
+        <p><b style="color:var(--band-ink)">112</b> Feuerwehr und Rettungsdienst · <b style="color:var(--band-ink)">110</b> Polizei</p>
+        <p><b style="color:var(--band-ink)">Gasgeruch:</b> Keine Schalter betätigen, kein offenes Feuer, Fenster öffnen, Haus verlassen und vom Freien aus den Notruf oder den Entstörungsdienst Ihres Gasversorgers anrufen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="schadensmelder">
+  <div class="wrap grid-2" style="grid-template-columns:minmax(0,1.3fr) minmax(0,0.9fr)">
+    <div class="panel wizard" data-wizard>
+      <div class="stack" style="gap:6px"><span class="eyebrow">Schadensmelder</span><p class="muted">Drei Klicks zum richtigen Meldeweg.</p></div>
+      <div class="wizard__progress" aria-hidden="true"></div>
+
+      <fieldset class="wizard__step">
+        <legend>Was ist passiert?</legend>
+        <div class="choices">
+          <div class="choice"><input type="radio" name="schaden" id="sm-wasser" value="wasser" data-label="Wasserschaden / Rohrbruch"><label for="sm-wasser"><b>Wasserschaden</b><span>Rohrbruch, Leck, Feuchtigkeit</span></label></div>
+          <div class="choice"><input type="radio" name="schaden" id="sm-heizung" value="heizung" data-label="Heizung / Warmwasser ausgefallen"><label for="sm-heizung"><b>Heizung / Warmwasser</b><span>Ausfall oder Störung</span></label></div>
+          <div class="choice"><input type="radio" name="schaden" id="sm-strom" value="strom" data-label="Strom / Licht im Gemeinschaftsbereich"><label for="sm-strom"><b>Strom / Licht</b><span>Treppenhaus, Keller, Außenbereich</span></label></div>
+          <div class="choice"><input type="radio" name="schaden" id="sm-sturm" value="sturm" data-label="Sturm- oder Gebäudeschaden"><label for="sm-sturm"><b>Sturm / Gebäude</b><span>Dach, Fassade, Fenster</span></label></div>
+          <div class="choice"><input type="radio" name="schaden" id="sm-tuer" value="tuer" data-label="Defekt an Tür, Schloss oder Aufzug"><label for="sm-tuer"><b>Tür / Aufzug</b><span>Haustür, Schließanlage, Aufzug</span></label></div>
+          <div class="choice"><input type="radio" name="schaden" id="sm-gas" value="gas" data-label="Gasgeruch" data-goto="sm-ergebnis-gas"><label for="sm-gas"><b>Gasgeruch</b><span>Sofort handeln</span></label></div>
+        </div>
+        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte wählen Sie aus, was passiert ist.</p>
+      </fieldset>
+
+      <fieldset class="wizard__step" hidden>
+        <legend>Wie dringend ist es?</legend>
+        <div class="choices">
+          <div class="choice"><input type="radio" name="dringend" id="sd-akut" value="akut" data-goto="sm-ergebnis-notfall"><label for="sd-akut"><b>Akut</b><span>Der Schaden breitet sich aus oder es droht Gefahr</span></label></div>
+          <div class="choice"><input type="radio" name="dringend" id="sd-normal" value="normal"><label for="sd-normal"><b>Dringend, aber stabil</b><span>Funktion eingeschränkt, keine Gefahr</span></label></div>
+          <div class="choice"><input type="radio" name="dringend" id="sd-klein" value="klein"><label for="sd-klein"><b>Kann warten</b><span>Kleiner Mangel, z. B. Glühbirne im Hausflur</span></label></div>
+        </div>
+        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte schätzen Sie die Dringlichkeit ein.</p>
+      </fieldset>
+
+      <div class="wizard__step" data-final hidden>
+        <div class="result result--ok">
+          <h3>Ihr Meldeweg: Kundenportal oder Telefon</h3>
+          <p>Ihre Meldung: <b data-echo="schaden">–</b>. Bitte melden Sie den Schaden mit Foto über das Kundenportal oder rufen Sie uns während der Geschäftszeiten an. Wir beauftragen dann die passenden Handwerker.</p>
+          <div class="btn-row">
+            <a class="btn" href="https://zuhause.app/login" target="_blank" rel="noopener">Im Kundenportal melden</a>
+            <a class="btn btn--ghost" href="tel:+4969403562400">069 / 4035624 - 00</a>
+          </div>
+          <p class="form-note">Kein Zugang zum Portal? Schreiben Sie an <a href="mailto:info@dp-immobilien-management.de?subject=Schadensmeldung">info@dp-immobilien-management.de</a> mit Adresse, Wohnungsnummer und Fotos.</p>
+        </div>
+      </div>
+
+      <div class="wizard__step" id="sm-ergebnis-notfall" data-final data-only-via-jump hidden>
+        <div class="result result--alert">
+          <h3>Bitte rufen Sie jetzt die Notfallnummer an</h3>
+          <p>Ihre Meldung: <b data-echo="schaden">–</b>.</p>
+          <a class="btn btn--alert" href="tel:+4915129707877">0151-29707877 anrufen</a>
+          <ul class="checklist">
+            <li>Bei Wasser: Absperrventil der Wohnung oder den Hauptwasserhahn schließen, wenn gefahrlos möglich.</li>
+            <li>Bei Strom und Wasser zugleich: Sicherung ausschalten und Abstand halten.</li>
+            <li>Schaden mit Fotos dokumentieren, Nachbarn informieren.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="wizard__step" id="sm-ergebnis-gas" data-final data-only-via-jump hidden>
+        <div class="result result--alert">
+          <h3>Gasgeruch: Sofort das Gebäude verlassen</h3>
+          <ul class="checklist">
+            <li>Keine Lichtschalter, Klingeln oder Elektrogeräte betätigen, kein offenes Feuer.</li>
+            <li>Fenster und Türen öffnen, Hausbewohner warnen (klopfen statt klingeln).</li>
+            <li>Vom Freien aus den Notruf 112 oder den Entstörungsdienst Ihres Gasversorgers anrufen.</li>
+            <li>Danach informieren Sie uns unter 0151-29707877.</li>
+          </ul>
+          <a class="btn btn--alert" href="tel:112">Notruf 112</a>
+        </div>
+      </div>
+
+      <div class="wizard__nav">
+        <button class="btn btn--ghost" type="button" data-back hidden>Neue Meldung</button>
+        <button class="btn" type="button" data-next>Weiter</button>
+      </div>
+    </div>
+
+    <aside class="stack">
+      <div class="contact-card contact-card--alert">
+        <span class="contact-card__label">Notfalltelefon</span>
+        <a href="tel:+4915129707877">0151-29707877</a>
+        <p class="muted">Für dringende Notfälle außerhalb der Geschäftszeiten.</p>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card__label">Büro</span>
+        <a href="tel:+4969403562400">069 / 4035624 - 00</a>
+        <span data-office-status class="status-line"><span class="dot dot--off"></span><span data-status-text>Mo–Fr 9–12 Uhr, Di + Do 14–16 Uhr</span></span>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card__label">Kundenportal</span>
+        <a href="https://zuhause.app/login" target="_blank" rel="noopener">zuhause.app</a>
+        <p class="muted">Vorgänge melden und den Bearbeitungsstand verfolgen. Alle relevanten Objektdokumente stehen dort zum Download bereit.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Was ist ein Notfall?</span><h2>Notfall oder normale Störung?</h2></div>
+    <div class="emergency-grid">
+      <div class="emergency-item emergency-item--top"><h3>Notfall – sofort anrufen</h3><p>Wasserrohrbruch, eindringendes Wasser, Totalausfall der Heizung im Winter, Sturmschäden mit Gefahr für Passanten, Haustür lässt sich nicht schließen.</p></div>
+      <div class="emergency-item"><h3>Dringend – zu Geschäftszeiten</h3><p>Warmwasser fällt aus, Aufzug steht still, Beleuchtung im Treppenhaus defekt, Feuchtigkeit an der Wand.</p></div>
+      <div class="emergency-item"><h3>Kann warten – per Portal</h3><p>Kleinere Mängel, Fragen zur Abrechnung, Wünsche an die Hausordnung oder Hinweise für die nächste Begehung.</p></div>
+    </div>
+  </div>
+</section>

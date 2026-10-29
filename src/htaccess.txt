@@ -1,0 +1,12 @@
+# dp immobilien management – Weiterleitungen alter Joomla-Adressen (301)
+RewriteEngine On
+RewriteRule ^9-leistungen/48-immobilienverwaltung-bad-vilbel/?$ /immobilienverwaltung-bad-vilbel/ [R=301,L]
+RewriteRule ^9-leistungen/49-immobilienverwaltung-hanau/?$ /immobilienverwaltung-hanau/ [R=301,L]
+RewriteRule ^9-leistungen/50-immobilienverwaltung-offenbach/?$ /immobilienverwaltung-offenbach/ [R=301,L]
+RewriteRule ^2-uncategorised/51-jobs-immobilienverwalter-frankfurt/?$ /jobs/immobilienverwalter-frankfurt/ [R=301,L]
+RewriteRule ^2-uncategorised/52-jobs-immobilienverwalter-bad-vilbel/?$ /jobs/immobilienverwalter-bad-vilbel/ [R=301,L]
+RewriteRule ^2-uncategorised/53-jobs-immobilienverwalter-hanau/?$ /jobs/immobilienverwalter-hanau/ [R=301,L]
+RewriteRule ^2-uncategorised/54-jobs-immobilienverwalter-offenbach/?$ /jobs/immobilienverwalter-offenbach/ [R=301,L]
+RewriteRule ^images/190814_Stellenanzeige-Stepstone\.pdf$ /assets/docs/190814_Stellenanzeige-Stepstone.pdf [R=301,L]
+RewriteRule ^images/(Datenschutzhinweise-[^/]+\.pdf)$ /assets/docs/$1 [R=301,L]
+ErrorDocument 404 /404.html

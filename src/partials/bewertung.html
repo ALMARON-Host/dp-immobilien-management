@@ -1,0 +1,52 @@
+<section class="section section--surface" id="bewertung">
+  <div class="wrap grid-2" style="grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr)">
+    <div class="stack">
+      <span class="eyebrow">Neu · Wertermittlung</span>
+      <h2>Was ist Ihre Immobilie wert?</h2>
+      <p>Statt eines automatischen Online-Rechners erhalten Sie von uns eine persönliche Einschätzung. Wir kennen den Markt im Rhein-Main-Gebiet aus 30 Jahren Verwaltung und schauen uns Ihr Objekt genau an.</p>
+      <ul class="checklist">
+        <li>Fachkundige Ermittlung des marktgerechten Verkaufspreises</li>
+        <li>Unverbindlich und vertraulich</li>
+        <li>Persönlicher Ansprechpartner statt Callcenter</li>
+      </ul>
+    </div>
+    <form class="panel wizard" data-wizard data-demo novalidate>
+      <div class="wizard__progress" aria-hidden="true"></div>
+      <fieldset class="wizard__step">
+        <legend>Um welche Immobilie geht es?</legend>
+        <div class="choices">
+          <div class="choice"><input type="radio" name="bw-art" id="bw-whg" value="Wohnung"><label for="bw-whg"><b>Wohnung</b><span>Eigentumswohnung</span></label></div>
+          <div class="choice"><input type="radio" name="bw-art" id="bw-haus" value="Haus"><label for="bw-haus"><b>Haus</b><span>Ein- oder Zweifamilienhaus</span></label></div>
+          <div class="choice"><input type="radio" name="bw-art" id="bw-mfh" value="Mehrfamilienhaus"><label for="bw-mfh"><b>Mehrfamilienhaus</b><span>Mietshaus, Wohn- und Geschäftshaus</span></label></div>
+        </div>
+        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte wählen Sie eine Option aus.</p>
+      </fieldset>
+      <fieldset class="wizard__step" hidden>
+        <legend>Eckdaten</legend>
+        <div class="form__row">
+          <div class="field"><label for="bw-ort">Ort / Stadtteil</label><input id="bw-ort" name="ort" type="text" placeholder="z. B. Bad Vilbel" required></div>
+          <div class="field"><label for="bw-flaeche">Wohnfläche in m²</label><input id="bw-flaeche" name="flaeche" type="number" min="10" inputmode="numeric" placeholder="z. B. 85" required></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="bw-baujahr">Baujahr (ca.)</label><input id="bw-baujahr" name="baujahr" type="number" min="1800" max="2030" inputmode="numeric" placeholder="z. B. 1972"></div>
+          <div class="field"><label for="bw-zustand">Zustand</label><select id="bw-zustand" name="zustand"><option>Gepflegt</option><option>Modernisiert / saniert</option><option>Renovierungsbedürftig</option><option>Neuwertig</option></select></div>
+        </div>
+      </fieldset>
+      <fieldset class="wizard__step" hidden>
+        <legend>Wohin dürfen wir die Einschätzung senden?</legend>
+        <div class="form__row">
+          <div class="field"><label for="bw-name">Name</label><input id="bw-name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="bw-tel">Telefon</label><input id="bw-tel" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="bw-mail">E-Mail</label><input id="bw-mail" type="email" autocomplete="email" required></div>
+        <label class="check" for="bw-ds"><input id="bw-ds" type="checkbox" required><span>Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.</span></label>
+        <button class="btn" type="submit">Einschätzung anfordern</button>
+        <p class="form-success" hidden>Vielen Dank! Wir melden uns persönlich bei Ihnen. (Entwurf: Versand noch nicht angebunden.)</p>
+      </fieldset>
+      <div class="wizard__nav">
+        <button class="btn btn--ghost" type="button" data-back hidden>Zurück zum Anfang</button>
+        <button class="btn" type="button" data-next>Weiter</button>
+      </div>
+    </form>
+  </div>
+</section>

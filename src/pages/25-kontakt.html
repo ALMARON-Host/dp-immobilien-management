@@ -1,0 +1,77 @@
+<!--meta {"path": "kontakt", "title": "Kontakt | dp immobilien management GmbH Frankfurt", "description": "Kontaktieren Sie die dp immobilien management GmbH: Cassellastr. 30-32 (Haus B), 60386 Frankfurt am Main, Tel. 069 / 4035624 - 00.", "nav": "kontakt", "crumbs": [["Kontakt", "/kontakt"]], "org_jsonld": true} -->
+
+<section class="page-hero">
+  <div class="wrap page-hero__grid page-hero__grid--solo">
+    <div class="stack">
+      {{breadcrumb}}
+      <span class="eyebrow">Kontakt</span>
+      <h1>Kontaktaufnahme mit der dp immobilien management GmbH</h1>
+      <p class="lead">Sie haben Fragen oder ein Anliegen? Wir sind persönlich für Sie da.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap stack-lg">
+    <div class="contact-cards">
+      <div class="contact-card">
+        <span class="contact-card__label">Telefon</span>
+        <a href="tel:+4969403562400">069 / 4035624 - 00</a>
+        <span data-office-status class="status-line"><span class="dot dot--off"></span><span data-status-text>Mo–Fr 9–12 Uhr, Di + Do 14–16 Uhr</span></span>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card__label">E-Mail</span>
+        <a href="mailto:info@dp-immobilien-management.de">info@dp-immobilien-management.de</a>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card__label">Adresse</span>
+        <a href="https://goo.gl/maps/69jJF8avpyE2" target="_blank" rel="noopener">Cassellastr. 30-32 (Haus B),<br>60386 Frankfurt am Main</a>
+        <span class="muted" style="font-size:.88rem">Route in Google Maps öffnen</span>
+      </div>
+      <div class="contact-card contact-card--alert">
+        <span class="contact-card__label">Notfall</span>
+        <a href="tel:+4915129707877">0151-29707877</a>
+        <span class="muted" style="font-size:.88rem">In dringenden Notfällen auch außerhalb der normalen Geschäftszeiten</span>
+      </div>
+    </div>
+
+    <div class="grid-2" style="grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);align-items:start">
+      <div class="stack">
+        <h2 style="font-size:var(--step-2)">Sie erreichen uns zu den Geschäftszeiten:</h2>
+        <dl class="hours" style="font-size:1.05rem">
+          <dt>Montag–Freitag</dt><dd>09.00 – 12.00 Uhr</dd>
+          <dt>Dienstag, Donnerstag</dt><dd>14.00 – 16.00 Uhr</dd>
+        </dl>
+        <p class="muted">In dringenden Notfällen erreichen Sie uns auch außerhalb der normalen Geschäftszeiten unter folgender Nummer: <a href="tel:+4915129707877">0151-29707877</a></p>
+        <p class="muted">Eigentümer und Mieter unserer Objekte erreichen alle Dokumente und Vorgänge auch über das <a href="https://zuhause.app/login" target="_blank" rel="noopener">Kundenportal</a>.</p>
+      </div>
+      <form class="panel form" data-demo novalidate>
+        <h2 style="font-size:var(--step-2)">Nachricht schreiben</h2>
+        <div class="form__row">
+          <div class="field"><label for="k-name">Name</label><input id="k-name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="k-anliegen">Anliegen</label><select id="k-anliegen"><option>Allgemeine Anfrage</option><option>Angebot Hausverwaltung</option><option>Vermieten / Verkaufen</option><option>Frage als Eigentümer/in</option><option>Frage als Mieter/in</option><option>Bewerbung</option></select></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="k-mail">E-Mail</label><input id="k-mail" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="k-tel">Telefon (optional)</label><input id="k-tel" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="k-objekt">Objektadresse (falls vorhanden)</label><input id="k-objekt" type="text" placeholder="z. B. Musterstraße 12, Frankfurt"></div>
+        <div class="field"><label for="k-msg">Nachricht</label><textarea id="k-msg" required></textarea></div>
+        <label class="check" for="k-ds"><input id="k-ds" type="checkbox" required><span>Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.</span></label>
+        <div class="btn-row"><button class="btn" type="submit">Nachricht senden</button></div>
+        <p class="form-success" hidden>Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich. (Entwurf: Versand noch nicht angebunden.)</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section section--band">
+  <div class="wrap split">
+    <div class="stack">
+      <span class="eyebrow">Tätigkeitsgebiet</span>
+      <h2>Von Bad Homburg bis Dreieich, von Hofheim bis Hanau</h2>
+      <p>Kundennähe ist uns wichtig, deswegen achten wir darauf, dass wir unsere Liegenschaften innerhalb von maximal einer Stunde erreichen können. So sind wir auch in Notfällen schnell vor Ort.</p>
+    </div>
+    {{> map}}
+  </div>
+</section>
