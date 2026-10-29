@@ -340,9 +340,10 @@ def read_page(fn):
 
 def main():
     load_partials()
-    if os.path.isdir(OUT):
-        shutil.rmtree(OUT)
-    os.makedirs(OUT)
+    os.makedirs(OUT, exist_ok=True)
+    for entry in os.listdir(OUT):  # Inhalt leeren (Ordner selbst bleiben lassen)
+        e = os.path.join(OUT, entry)
+        shutil.rmtree(e) if os.path.isdir(e) else os.remove(e)
     shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(OUT, "assets"))
     pages = []
     for fn in sorted(os.listdir(os.path.join(SRC, "pages"))):
@@ -357,7 +358,7 @@ def main():
             d = os.path.join(OUT, *meta["path"].split("/")) if meta["path"] else OUT
             os.makedirs(d, exist_ok=True)
             target = os.path.join(d, "index.html")
-        open(target, "w", encoding="utf-8").write(page(meta, body))
+        open(target, "w", encoding="utf-8").write(page(meta, body, fragment=("--artifact" in sys.argv and meta["path"] == "" and target.endswith("index.html") and os.path.dirname(target) == OUT)))
     # Sitemap
     urls = "".join(f"<url><loc>{SITE_URL}/{p['path'] + '/' if p['path'] else ''}</loc></url>" for p in pages if p["path"] != "404")
     open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write(
