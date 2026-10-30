@@ -76,3 +76,16 @@ Offen:
 - Die Google-Werte unterscheiden sich je nach Portal (4,7 / 34 vs. 5,0 / 32). Vor Livegang im Google-Unternehmensprofil prüfen und Zahl anpassen.
 - Weitere Zitate: Die Texte der Google-Rezensionen sind nur im Google-Profil einsehbar. Der Kunde kann die besten freigeben, dann ergänzen wir sie in `testimonial.html`.
 - ImmoScout24 nennt als Erreichbarkeit Mo–Do 9–17 Uhr, Fr 9–13 Uhr, die alte Website dagegen Mo–Fr 9–12 Uhr und Di + Do 14–16 Uhr. Welche Zeiten gelten? (wichtig für die Live-Anzeige „Büro öffnet …“)
+
+## Barrierefreiheit (Stand 30.10.2026)
+
+Automatisch geprüft mit axe-core 4.10 (WCAG 2.0/2.1/2.2 A + AA, Best Practices): alle 28 Seiten, heller und dunkler Modus, **0 Verstöße**.
+
+Eingebaut: Sprache `de`, „Zum Inhalt springen“-Link, sichtbarer Tastatur-Fokus, Alt-Texte, beschriftete Formularfelder, Landmarken, Menü mit `aria-expanded` und Escape, reduzierte Bewegung (`prefers-reduced-motion`), Kontraste nach AA in beiden Modi, Vorher/Nachher-Regler per Tastatur bedienbar.
+
+Noch offen / nicht automatisch prüfbar:
+- Test mit echtem Screenreader (NVDA, VoiceOver) und reiner Tastaturbedienung durch einen Menschen
+- PDFs (Stellenanzeige, Datenschutzhinweise) sind nicht barrierefrei aufbereitet
+- Links in neuem Tab werden nicht angekündigt
+- Fehlermeldungen in Formularen nutzen die Browser-Standardmeldungen
+- Barrierefreiheitserklärung fehlt (bei BFSG-Pflicht nötig, Pflicht vorher klären)

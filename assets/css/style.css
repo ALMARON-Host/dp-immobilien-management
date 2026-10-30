@@ -32,6 +32,8 @@
   --band: #221e27;
   --band-ink: #f3f1f5;
   --band-muted: #b5b1bc;
+  --band-accent: #ff9fcf;
+  --alert-btn: #c22f2f;
   --alert: #c22f2f;
   --alert-soft: #fbe7e5;
   --ok: #2b7a52;
@@ -69,6 +71,8 @@
     --band: #0c0a0e;
     --band-ink: #f3f1f5;
     --band-muted: #a9a5b0;
+    --band-accent: #ff9fcf;
+    --alert-btn: #c22f2f;
     --alert: #ff7a70;
     --alert-soft: #3a1716;
     --ok: #6cc996;
@@ -138,7 +142,8 @@ strong { font-weight: 700; }
 .section--tight { padding-block: clamp(40px, 5vw, 72px); }
 .section--surface { background: var(--surface); }
 .section--band { background: var(--band); color: var(--band-ink); }
-.section--band .eyebrow { color: var(--brand-ink); }
+.section--band .eyebrow, .cta-band .eyebrow { color: var(--band-accent); }
+.section--band a:not(.btn):not(.chip):not(.big-number) { color: var(--band-accent); }
 .section--band p, .section--band li { color: var(--band-muted); }
 .section--band h2, .section--band h3 { color: var(--band-ink); }
 .stack { display: grid; gap: 1.1rem; align-content: start; }
@@ -176,8 +181,8 @@ strong { font-weight: 700; }
 .btn--ghost:hover { --btn-fg: var(--brand-ink); background: var(--brand-soft); border-color: var(--brand-soft); }
 .btn--light { --btn-bg: var(--band-ink); --btn-fg: var(--band); --btn-bd: var(--band-ink); }
 .btn--light:hover { background: var(--brand-soft); border-color: var(--brand-soft); color: var(--band); }
-.btn--alert { --btn-bg: var(--alert); --btn-fg: #fff; --btn-bd: var(--alert); }
-.btn--alert:hover { background: var(--alert); border-color: var(--alert); filter: brightness(0.92); }
+.btn--alert { --btn-bg: var(--alert-btn); --btn-fg: #fff; --btn-bd: var(--alert-btn); }
+.btn--alert:hover { background: var(--alert-btn); border-color: var(--alert-btn); filter: brightness(0.9); }
 .btn--sm { min-height: 40px; padding: 8px 16px; font-size: 0.9rem; }
 .btn svg { width: 18px; height: 18px; flex: none; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
@@ -610,6 +615,7 @@ a.tile--feature:hover { color: var(--band-ink); border-color: var(--brand); }
 .footer-brand { display: grid; gap: 16px; align-content: start; }
 .footer-brand img { height: 64px; width: auto; background: #fff; border-radius: 12px; padding: 8px 12px; }
 .footer-bottom { margin-top: 56px; border-top: 1px solid rgb(255 255 255 / .1); padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 0.85rem; }
+.site-footer .hours dd { color: var(--band-muted); }
 .footer-bottom ul { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .footer-brand { grid-column: 1 / -1; } }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }

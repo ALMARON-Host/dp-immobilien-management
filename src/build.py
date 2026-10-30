@@ -131,7 +131,7 @@ def nav_html(active, current_path):
 
 def header_html(active, current_path):
     return f"""<a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
-<div class="topbar">
+<div class="topbar" role="region" aria-label="Erreichbarkeit und Notfallnummer">
   <div class="wrap">
     <div class="topbar__group">
       <span data-office-status class="status-line"><span class="dot dot--off"></span><span data-status-text>Mo–Fr 9–12 Uhr, Di + Do 14–16 Uhr</span></span>

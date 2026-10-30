@@ -9,7 +9,7 @@
   function applyTheme(t) {
     if (t === "light" || t === "dark") root.setAttribute("data-theme", t); else root.removeAttribute("data-theme");
   }
-  applyTheme(storedTheme());
+  if (storedTheme()) applyTheme(storedTheme());
   function isDark() {
     var t = root.getAttribute("data-theme");
     if (t) return t === "dark";
