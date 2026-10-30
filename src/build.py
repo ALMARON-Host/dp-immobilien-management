@@ -124,7 +124,9 @@ def nav_html(active, current_path):
         else:
             cur = ' aria-current="page"' if href.strip("/") == current_path else ""
             items.append(f'<li class="nav__item"><a class="{cls}" href="{href}"{cur}>{title}</a></li>')
-    return f'<nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation"><ul class="nav__list">{"".join(items)}</ul></nav>'
+    extra = (f'<div class="nav__mobile-extra"><a class="btn" href="tel:{TEL}">{ICON["phone"]}{TEL_TXT}</a>'
+             f'<a class="btn btn--ghost" href="{PORTAL}" target="_blank" rel="noopener">{ICON["portal"]}Kundenportal</a></div>')
+    return f'<nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation"><ul class="nav__list">{"".join(items)}</ul>{extra}</nav>'
 
 
 def header_html(active, current_path):

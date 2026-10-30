@@ -27,12 +27,24 @@
   /* ---------- Navigation ---------- */
   var nav = document.querySelector(".nav");
   var toggle = document.querySelector(".menu-toggle");
+  var header = document.querySelector(".site-header");
+  var ICON_MENU = toggle ? toggle.innerHTML : "";
+  var ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  function setMenu(open) {
+    if (!nav || !toggle) return;
+    nav.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+    // Position erst nach dem Umschalten messen, damit das Menü direkt unter der Kopfzeile ansetzt
+    if (open && header) nav.style.setProperty("--nav-top", Math.max(0, header.getBoundingClientRect().bottom) + "px");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+    toggle.innerHTML = open ? ICON_CLOSE : ICON_MENU;
+  }
   if (nav && toggle) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
-      document.body.classList.toggle("nav-open", open);
-      toggle.setAttribute("aria-expanded", String(open));
-    });
+    toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("is-open")); });
+    // Menü schließen, sobald ein Link angetippt wird (auch Sprungmarken auf derselben Seite)
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+    window.addEventListener("resize", function () { if (window.innerWidth > 980) setMenu(false); });
   }
   document.querySelectorAll(".nav__item--has-sub > .nav__link").forEach(function (btn) {
     btn.addEventListener("click", function (e) {
@@ -47,7 +59,7 @@
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
     document.querySelectorAll(".nav__item.is-open").forEach(function (i) { i.classList.remove("is-open"); });
-    if (nav && nav.classList.contains("is-open")) { toggle.click(); toggle.focus(); }
+    if (nav && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
   });
 
   /* ---------- Erreichbarkeit live (Europe/Berlin) ---------- */
