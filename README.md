@@ -61,3 +61,18 @@ Alle 24 Seiten der alten Website plus 5 neue:
 7. **Kleine Korrekturen** gegenüber dem Original: Tippfehler (z. B. „technischne“, „Schadesfällen“, „Initiativebwerbungen“, „vermietenn“, „waren“→„wahren“), Hanau-Seite nannte versehentlich „Hausverwaltung Bad Vilbel“, Jobseiten nannten „dp Immobilien GmbH“ → „dp immobilien management GmbH“.
 8. Daniel Budecker hat nur ein Platzhalterbild; Teamfotos ggf. aktualisieren.
 9. Bildrechte der Stockfotos (Fotolia/Adobe Stock) für die neue Domain prüfen.
+
+## Bewertungen (Stand 30.10.2026)
+
+Eingebaut sind nur belegbare Angaben. Pflege in `src/partials/rating.html`, `testimonial.html`, `safety.html`.
+
+| Quelle | Wert | Fundstelle |
+|---|---|---|
+| Google (über JACASA) | 4,7 / 5 bei 34 Bewertungen, aktualisiert 26.10.2026 | jacasa.de/hausverwaltung/dp-immobilien-management-frankfurt-am-main |
+| ProvenExpert (Google-Import) | Google Maps 5,0 / 5 bei 32 Bewertungen (16.10.2026) | provenexpert.com/de-de/dp-immobilien-management-gmbh/ |
+| ImmoScout24 | 1 veröffentlichte Bewertung, 5,0, Eigentümer:in, 11.07.2021 | immobilienscout24.de/anbieter/profil/dp-immobilien-management-gmbh |
+
+Offen:
+- Die Google-Werte unterscheiden sich je nach Portal (4,7 / 34 vs. 5,0 / 32). Vor Livegang im Google-Unternehmensprofil prüfen und Zahl anpassen.
+- Weitere Zitate: Die Texte der Google-Rezensionen sind nur im Google-Profil einsehbar. Der Kunde kann die besten freigeben, dann ergänzen wir sie in `testimonial.html`.
+- ImmoScout24 nennt als Erreichbarkeit Mo–Do 9–17 Uhr, Fr 9–13 Uhr, die alte Website dagegen Mo–Fr 9–12 Uhr und Di + Do 14–16 Uhr. Welche Zeiten gelten? (wichtig für die Live-Anzeige „Büro öffnet …“)

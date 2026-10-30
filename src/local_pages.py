@@ -100,6 +100,7 @@ for s in SELL:
   </div>
 </section>
 {{{{> bewertung}}}}
+{{{{> testimonial}}}}
 {{{{> cta}}}}
 """
     write(s["fn"], meta, body)
@@ -176,6 +177,7 @@ for m in MGMT:
     <p class="lead measure" style="color:var(--ink)">{m["outro"]}</p>
   </div>
 </section>
+{{{{> safety}}}}
 {{{{> services3}}}}
 {{{{> cta}}}}
 """
