@@ -19,7 +19,7 @@
           <div class="choice"><input type="radio" name="bw-art" id="bw-haus" value="Haus"><label for="bw-haus"><b>Haus</b><span>Ein- oder Zweifamilienhaus</span></label></div>
           <div class="choice"><input type="radio" name="bw-art" id="bw-mfh" value="Mehrfamilienhaus"><label for="bw-mfh"><b>Mehrfamilienhaus</b><span>Mietshaus, Wohn- und Geschäftshaus</span></label></div>
         </div>
-        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte wählen Sie eine Option aus.</p>
+        <p class="field-error" data-hint role="alert" hidden>Bitte wählen Sie eine Option aus.</p>
       </fieldset>
       <fieldset class="wizard__step" hidden>
         <legend>Eckdaten</legend>
@@ -41,7 +41,7 @@
         <div class="field"><label for="bw-mail">E-Mail</label><input id="bw-mail" type="email" autocomplete="email" required></div>
         <label class="check" for="bw-ds"><input id="bw-ds" type="checkbox" required><span>Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.</span></label>
         <button class="btn" type="submit">Einschätzung anfordern</button>
-        <p class="form-success" hidden>Vielen Dank! Wir melden uns persönlich bei Ihnen. (Entwurf: Versand noch nicht angebunden.)</p>
+        <p class="form-success" role="status" hidden>Vielen Dank! Wir melden uns persönlich bei Ihnen. (Entwurf: Versand noch nicht angebunden.)</p>
       </fieldset>
       <div class="wizard__nav">
         <button class="btn btn--ghost" type="button" data-back hidden>Zurück zum Anfang</button>

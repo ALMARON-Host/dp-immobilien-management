@@ -540,7 +540,7 @@ a.tile--feature:hover { color: var(--band-ink); border-color: var(--brand); }
 .result--alert h3 { color: var(--alert); }
 .result--ok { background: var(--brand-soft); border: 1.5px solid var(--brand); }
 .form { display: grid; gap: 16px; }
-.form__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.form__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 @media (max-width: 600px) { .form__row { grid-template-columns: 1fr; } }
 .field { display: grid; gap: 6px; min-width: 0; }
 .field label { font-weight: 700; font-size: 0.9rem; }
@@ -552,6 +552,10 @@ a.tile--feature:hover { color: var(--band-ink); border-color: var(--brand); }
 .check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; font-size: 0.88rem; color: var(--muted); align-items: start; }
 .check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--brand); }
 .form-note { font-size: 0.85rem; color: var(--muted); }
+.field-error { margin: 2px 0 0; font-size: 0.86rem; font-weight: 600; color: var(--alert); display: flex; gap: 6px; align-items: flex-start; grid-column: 1 / -1; }
+.field-error::before { content: "!"; flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--alert); color: var(--surface); font-size: 0.75rem; font-weight: 800; display: grid; place-items: center; margin-top: 1px; }
+[aria-invalid="true"] { border-color: var(--alert) !important; }
+.check [aria-invalid="true"] { outline: 2px solid var(--alert); outline-offset: 2px; }
 .form-success { background: var(--brand-soft); border: 1.5px solid var(--brand); border-radius: var(--radius); padding: 18px; font-weight: 600; }
 
 /* Kontaktkarten */

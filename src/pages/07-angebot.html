@@ -25,7 +25,7 @@
           <div class="choice"><input type="radio" name="objektart" id="oa-se" value="Sondereigentumsverwaltung"><label for="oa-se"><b>Eigentumswohnung</b><span>Sondereigentumsverwaltung</span></label></div>
           <div class="choice"><input type="radio" name="objektart" id="oa-gew" value="Gewerbeverwaltung"><label for="oa-gew"><b>Gewerbeimmobilie</b><span>Geschäftshaus, Gewerbepark</span></label></div>
         </div>
-        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte wählen Sie eine Option aus.</p>
+        <p class="field-error" data-hint role="alert" hidden>Bitte wählen Sie eine Option aus.</p>
       </fieldset>
 
       <fieldset class="wizard__step" hidden>
@@ -47,7 +47,7 @@
           <div class="choice"><input type="radio" name="situation" id="s-neubau" value="Neubau / Erstverwaltung"><label for="s-neubau"><b>Neubau</b><span>Erstverwaltung nach Fertigstellung</span></label></div>
           <div class="choice"><input type="radio" name="situation" id="s-selbst" value="Bisher selbst verwaltet"><label for="s-selbst"><b>Bisher selbst verwaltet</b><span>Wir suchen Entlastung</span></label></div>
         </div>
-        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte wählen Sie eine Option aus.</p>
+        <p class="field-error" data-hint role="alert" hidden>Bitte wählen Sie eine Option aus.</p>
         <div class="field"><label for="a-start">Gewünschter Beginn</label><select id="a-start" name="start"><option>So bald wie möglich</option><option>Zum nächsten Jahreswechsel</option><option>Innerhalb von 6 Monaten</option><option>Noch offen</option></select></div>
       </fieldset>
 
@@ -64,7 +64,7 @@
         <div class="field"><label for="a-msg">Besonderheiten (optional)</label><textarea id="a-msg" name="nachricht" placeholder="z. B. anstehende Sanierung, Tiefgarage, gemischte Nutzung"></textarea></div>
         <label class="check" for="a-ds"><input id="a-ds" type="checkbox" required><span>Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.</span></label>
         <button class="btn" type="submit">Anfrage absenden</button>
-        <p class="form-success" hidden>Vielen Dank! Ihre Anfrage ist eingegangen. Wir melden uns persönlich bei Ihnen. (Entwurf: Versand noch nicht angebunden.)</p>
+        <p class="form-success" role="status" hidden>Vielen Dank! Ihre Anfrage ist eingegangen. Wir melden uns persönlich bei Ihnen. (Entwurf: Versand noch nicht angebunden.)</p>
       </fieldset>
 
       <div class="wizard__nav">

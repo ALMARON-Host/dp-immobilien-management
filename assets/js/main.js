@@ -161,6 +161,58 @@
     });
   }
 
+  /* ---------- Formular-Prüfung mit eigenen Fehlermeldungen ---------- */
+  var errSeq = 0;
+  function fieldMessage(el) {
+    var v = el.validity;
+    if (el.type === "checkbox" && v.valueMissing) return "Bitte bestätigen Sie, dass Sie die Datenschutzerklärung gelesen haben.";
+    if (v.valueMissing) return "Bitte füllen Sie dieses Feld aus.";
+    if (v.typeMismatch && el.type === "email") return "Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@beispiel.de.";
+    if (v.rangeUnderflow) return "Bitte geben Sie eine Zahl ab " + el.min + " ein.";
+    if (v.rangeOverflow) return "Bitte geben Sie eine Zahl bis " + el.max + " ein.";
+    if (v.badInput) return "Bitte geben Sie nur Ziffern ein.";
+    return "Bitte prüfen Sie Ihre Eingabe.";
+  }
+  function setError(el, msg) {
+    var box = el.closest(".field") || el.closest(".check") || el.parentElement;
+    var err = box.querySelector(":scope > .field-error");
+    if (!msg) {
+      el.removeAttribute("aria-invalid");
+      if (err) err.remove();
+      var d = (el.getAttribute("aria-describedby") || "").split(" ").filter(function (x) { return x && x.indexOf("err-") !== 0; }).join(" ");
+      if (d) el.setAttribute("aria-describedby", d); else el.removeAttribute("aria-describedby");
+      return;
+    }
+    if (!err) {
+      err = document.createElement("p"); err.className = "field-error"; err.id = "err-" + (++errSeq);
+      box.appendChild(err);
+    }
+    err.textContent = msg;
+    el.setAttribute("aria-invalid", "true");
+    var ids = (el.getAttribute("aria-describedby") || "").split(" ").filter(function (x) { return x && x.indexOf("err-") !== 0; });
+    ids.push(err.id); el.setAttribute("aria-describedby", ids.join(" "));
+  }
+  // Prüft alle Felder in einem Bereich; zeigt Meldungen an und setzt den Fokus auf das erste fehlerhafte Feld
+  function validateArea(area) {
+    var first = null;
+    area.querySelectorAll("input, select, textarea").forEach(function (el) {
+      if (el.type === "radio" || el.disabled || el.closest("[hidden]")) return;
+      if (el.checkValidity()) setError(el, null);
+      else { setError(el, fieldMessage(el)); if (!first) first = el; }
+    });
+    if (first) first.focus();
+    return !first;
+  }
+  // Meldung verschwindet, sobald korrigiert wird
+  document.addEventListener("input", function (e) {
+    var el = e.target;
+    if (el.getAttribute && el.getAttribute("aria-invalid") === "true" && el.checkValidity()) setError(el, null);
+  });
+  document.addEventListener("change", function (e) {
+    var el = e.target;
+    if (el.getAttribute && el.getAttribute("aria-invalid") === "true" && el.checkValidity()) setError(el, null);
+  });
+
   /* ---------- Assistenten (mehrstufig) ---------- */
   document.querySelectorAll("[data-wizard]").forEach(function (wiz) {
     var steps = Array.prototype.slice.call(wiz.querySelectorAll(".wizard__step"));
@@ -181,12 +233,14 @@
     }
     function valid() {
       var s = steps[i];
-      var required = s.querySelectorAll("[required]");
-      for (var k = 0; k < required.length; k++) { if (!required[k].checkValidity()) { required[k].reportValidity(); return false; } }
       var radios = s.querySelectorAll("input[type=radio]");
       if (radios.length && !s.querySelector("input[type=radio]:checked")) {
-        var msg = s.querySelector("[data-hint]"); if (msg) msg.hidden = false; return false;
+        var msg = s.querySelector("[data-hint]");
+        if (msg) { msg.hidden = false; msg.textContent = msg.textContent; }
+        radios[0].focus();
+        return false;
       }
+      if (!validateArea(s)) return false;
       return true;
     }
     if (next) next.addEventListener("click", function () {
@@ -214,7 +268,7 @@
   document.querySelectorAll("form[data-demo]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (!validateArea(form)) return;
       var ok = form.querySelector(".form-success");
       if (ok) { ok.hidden = false; ok.setAttribute("tabindex", "-1"); ok.focus(); }
     });

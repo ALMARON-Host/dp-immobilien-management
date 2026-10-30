@@ -36,7 +36,7 @@
           <div class="choice"><input type="radio" name="schaden" id="sm-tuer" value="tuer" data-label="Defekt an Tür, Schloss oder Aufzug"><label for="sm-tuer"><b>Tür / Aufzug</b><span>Haustür, Schließanlage, Aufzug</span></label></div>
           <div class="choice"><input type="radio" name="schaden" id="sm-gas" value="gas" data-label="Gasgeruch" data-goto="sm-ergebnis-gas"><label for="sm-gas"><b>Gasgeruch</b><span>Sofort handeln</span></label></div>
         </div>
-        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte wählen Sie aus, was passiert ist.</p>
+        <p class="field-error" data-hint role="alert" hidden>Bitte wählen Sie aus, was passiert ist.</p>
       </fieldset>
 
       <fieldset class="wizard__step" hidden>
@@ -46,7 +46,7 @@
           <div class="choice"><input type="radio" name="dringend" id="sd-normal" value="normal"><label for="sd-normal"><b>Dringend, aber stabil</b><span>Funktion eingeschränkt, keine Gefahr</span></label></div>
           <div class="choice"><input type="radio" name="dringend" id="sd-klein" value="klein"><label for="sd-klein"><b>Kann warten</b><span>Kleiner Mangel, z. B. Glühbirne im Hausflur</span></label></div>
         </div>
-        <p class="form-note" data-hint hidden style="color:var(--alert)">Bitte schätzen Sie die Dringlichkeit ein.</p>
+        <p class="field-error" data-hint role="alert" hidden>Bitte schätzen Sie die Dringlichkeit ein.</p>
       </fieldset>
 
       <div class="wizard__step" data-final hidden>

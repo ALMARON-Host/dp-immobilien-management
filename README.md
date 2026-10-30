@@ -81,11 +81,9 @@ Offen:
 
 Automatisch geprüft mit axe-core 4.10 (WCAG 2.0/2.1/2.2 A + AA, Best Practices): alle 28 Seiten, heller und dunkler Modus, **0 Verstöße**.
 
-Eingebaut: Sprache `de`, „Zum Inhalt springen“-Link, sichtbarer Tastatur-Fokus, Alt-Texte, beschriftete Formularfelder, Landmarken, Menü mit `aria-expanded` und Escape, reduzierte Bewegung (`prefers-reduced-motion`), Kontraste nach AA in beiden Modi, Vorher/Nachher-Regler per Tastatur bedienbar.
+Eingebaut: Sprache `de`, „Zum Inhalt springen“-Link, sichtbarer Tastatur-Fokus, Alt-Texte, beschriftete Formularfelder, Landmarken, Menü mit `aria-expanded` und Escape, reduzierte Bewegung (`prefers-reduced-motion`), Kontraste nach AA in beiden Modi, Vorher/Nachher-Regler per Tastatur bedienbar, Links in neuem Tab werden angekündigt, eigene Fehlermeldungen in Formularen (am Feld, mit `aria-invalid`/`aria-describedby`, Fokus auf erstes Fehlerfeld).
 
 Noch offen / nicht automatisch prüfbar:
 - Test mit echtem Screenreader (NVDA, VoiceOver) und reiner Tastaturbedienung durch einen Menschen
 - PDFs (Stellenanzeige, Datenschutzhinweise) sind nicht barrierefrei aufbereitet
-- Links in neuem Tab werden nicht angekündigt
-- Fehlermeldungen in Formularen nutzen die Browser-Standardmeldungen
 - Barrierefreiheitserklärung fehlt (bei BFSG-Pflicht nötig, Pflicht vorher klären)

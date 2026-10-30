@@ -102,6 +102,19 @@ def resolve(url, prefix):
     return prefix + (target + "/" if target else "") + "index.html" + frag
 
 
+def announce_new_tab(html):
+    """Ergänzt bei Links mit target="_blank" einen Hinweis für Screenreader."""
+    def fix(m):
+        tag, inner = m.group(1), m.group(2)
+        if "neuem Tab" in tag or "neuem Tab" in inner:
+            return m.group(0)
+        if 'aria-label="' in tag:
+            tag = re.sub(r'aria-label="([^"]*)"', lambda a: f'aria-label="{a.group(1)} (öffnet in neuem Tab)"', tag)
+            return f"{tag}{inner}</a>"
+        return f'{tag}{inner}<span class="visually-hidden"> (öffnet in neuem Tab)</span></a>'
+    return re.sub(r'(<a\s[^>]*target="_blank"[^>]*>)(.*?)</a>', fix, html, flags=re.S)
+
+
 def rewrite_links(html, prefix):
     return re.sub(r'(href|src|srcset|action)="(/[^"]*)"', lambda m: f'{m.group(1)}="{resolve(m.group(2), prefix)}"', html)
 
@@ -311,7 +324,7 @@ def page(meta, body, fragment=False):
 {content}
 </body>
 </html>"""
-    return rewrite_links(html, prefix)
+    return rewrite_links(announce_new_tab(html), prefix)
 
 
 PARTIALS = {}
