@@ -645,6 +645,29 @@ a.rating:hover { color: var(--brand-ink); }
 @media (max-width: 520px) { .safety { grid-template-columns: 1fr; } }
 .section--band .rating, .section--band .rating--plain { color: var(--band-ink); }
 
+
+/* Google-Bewertung: Abzeichen mit Google-Logo */
+.g-logo { width: 22px; height: 22px; flex: none; }
+.g-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 10px; border-radius: 999px; background: #fff; border: 1px solid #dadce0; color: #202124; text-decoration: none; font-size: 0.9rem; box-shadow: 0 1px 2px rgb(60 64 67 / .15); }
+.g-chip:hover { border-color: #4285F4; color: #202124; }
+.g-chip__text { color: #5f6368; } .g-chip__text b { color: #202124; font-weight: 700; }
+.g-chip__score { font-weight: 800; font-size: 1rem; color: #202124; }
+.g-chip__count { color: #5f6368; }
+.g-badge { margin-top: 14px; display: grid; grid-template-columns: auto auto auto minmax(0, 1fr) auto; grid-template-areas: "logo label score stars cta" "logo count count count cta"; align-items: center; gap: 2px 14px; padding: 18px 22px; border-radius: var(--radius); background: #fff; border: 1px solid #dadce0; color: #202124; text-decoration: none; box-shadow: 0 1px 3px rgb(60 64 67 / .15); }
+.g-badge:hover { border-color: #4285F4; color: #202124; }
+.g-badge .g-logo { grid-area: logo; width: 40px; height: 40px; }
+.g-badge__label { grid-area: label; font-size: 1.05rem; color: #5f6368; } .g-badge__label b { color: #202124; }
+.g-badge__score { grid-area: score; font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; line-height: 1; }
+.g-badge__stars { grid-area: stars; } .g-badge__stars .stars { font-size: 1.35rem; }
+.g-badge__count { grid-area: count; color: #5f6368; font-size: 0.9rem; }
+.g-badge__cta { grid-area: cta; color: #1a73e8; font-size: 0.92rem; }
+@media (max-width: 680px) {
+  .g-badge { grid-template-columns: auto auto minmax(0, 1fr); grid-template-areas: "logo label label" "logo score stars" "logo count count" "cta cta cta"; }
+  .g-badge__cta { margin-top: 8px; }
+}
+.safety__num--g { display: flex; align-items: center; gap: 8px; color: var(--ink); }
+.safety__num--g .stars { font-size: 1rem; }
+
 /* Mobile Aktionsleiste */
 .action-bar { display: none; }
 .nav__mobile-extra { display: none; }
