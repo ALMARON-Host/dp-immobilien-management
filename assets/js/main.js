@@ -63,29 +63,82 @@
   });
 
   /* ---------- Erreichbarkeit live (Europe/Berlin) ---------- */
-  // Mo–Fr 09–12 Uhr, zusätzlich Di + Do 14–16 Uhr
+  // ZENTRALE STELLE für die Telefonzeiten. Wochentag: 1 = Montag … 5 = Freitag. Zeiten in Minuten ab 0 Uhr.
+  var OFFICE_HOURS = {
+    1: [[540, 720]],              // Mo 09:00–12:00
+    2: [[540, 720], [840, 960]],  // Di 09:00–12:00, 14:00–16:00
+    3: [[540, 720]],              // Mi 09:00–12:00
+    4: [[540, 720], [840, 960]],  // Do 09:00–12:00, 14:00–16:00
+    5: [[540, 720]]               // Fr 09:00–12:00
+  };
+  var WEEKDAYS = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+
+  // Aktuelles Datum und Uhrzeit in Frankfurt (unabhängig davon, wo der Besucher ist)
   function berlinNow() {
     try {
-      var parts = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date());
+      var parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Berlin", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date());
       var o = {}; parts.forEach(function (p) { o[p.type] = p.value; });
-      var days = { "So": 0, "Mo": 1, "Di": 2, "Mi": 3, "Do": 4, "Fr": 5, "Sa": 6 };
-      return { day: days[o.weekday.replace(".", "")], min: parseInt(o.hour, 10) * 60 + parseInt(o.minute, 10) };
-    } catch (e) { var d = new Date(); return { day: d.getDay(), min: d.getHours() * 60 + d.getMinutes() }; }
+      return { y: +o.year, m: +o.month, d: +o.day, min: (+o.hour % 24) * 60 + +o.minute };
+    } catch (e) { var n = new Date(); return { y: n.getFullYear(), m: n.getMonth() + 1, d: n.getDate(), min: n.getHours() * 60 + n.getMinutes() }; }
   }
-  function officeOpen() {
-    var n = berlinNow();
-    if (n.day < 1 || n.day > 5) return false;
-    if (n.min >= 540 && n.min < 720) return true;
-    if ((n.day === 2 || n.day === 4) && n.min >= 840 && n.min < 960) return true;
-    return false;
+
+  // Gesetzliche Feiertage in Hessen
+  function easterSunday(y) {
+    var a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25),
+        g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4,
+        l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451),
+        month = Math.floor((h + l - 7 * m + 114) / 31), day = ((h + l - 7 * m + 114) % 31) + 1;
+    return Date.UTC(y, month - 1, day);
   }
-  var open = officeOpen();
-  document.querySelectorAll("[data-office-status]").forEach(function (el) {
-    var dot = el.querySelector(".dot");
-    var txt = el.querySelector("[data-status-text]");
-    if (dot) dot.classList.toggle("dot--off", !open);
-    if (txt) txt.textContent = open ? "Jetzt telefonisch erreichbar" : "Büro derzeit nicht besetzt";
-  });
+  var holidayCache = {};
+  function isHoliday(t) {
+    var dt = new Date(t), y = dt.getUTCFullYear();
+    if (!holidayCache[y]) {
+      var e = easterSunday(y), DAY = 86400000;
+      holidayCache[y] = [Date.UTC(y, 0, 1), e - 2 * DAY, e + DAY, Date.UTC(y, 4, 1), e + 39 * DAY, e + 50 * DAY,
+                         e + 60 * DAY, Date.UTC(y, 9, 3), Date.UTC(y, 11, 25), Date.UTC(y, 11, 26)];
+    }
+    return holidayCache[y].indexOf(t) !== -1;
+  }
+
+  function hhmm(min) { return Math.floor(min / 60) + ":" + ("0" + (min % 60)).slice(-2) + " Uhr"; }
+
+  // Ermittelt: geöffnet (bis wann) oder nächste Öffnung (wann)
+  function officeStatus() {
+    var n = berlinNow(), today = Date.UTC(n.y, n.m - 1, n.d), DAY = 86400000;
+    for (var i = 0; i < 21; i++) {
+      var t = today + i * DAY, wd = new Date(t).getUTCDay(), slots = OFFICE_HOURS[wd] || [];
+      if (isHoliday(t)) continue;
+      for (var s = 0; s < slots.length; s++) {
+        var start = slots[s][0], end = slots[s][1];
+        if (i === 0 && n.min >= end) continue;
+        if (i === 0 && n.min >= start) return { open: true, until: end };
+        return { open: false, dayOffset: i, weekday: wd, start: start, minutesUntil: i === 0 ? start - n.min : null, holidayToday: isHoliday(today) };
+      }
+    }
+    return { open: false };
+  }
+
+  function statusText(st) {
+    if (st.open) return "Jetzt telefonisch erreichbar – bis " + hhmm(st.until);
+    if (st.start == null) return "Telefonzeiten: Mo–Fr 9–12 Uhr";
+    if (st.minutesUntil != null && st.minutesUntil <= 60) return "Büro öffnet in " + st.minutesUntil + " Min.";
+    var when = st.dayOffset === 0 ? "heute" : st.dayOffset === 1 ? "morgen" : "am " + WEEKDAYS[st.weekday];
+    return (st.holidayToday ? "Heute Feiertag – " : "") + "Büro öffnet " + when + " um " + hhmm(st.start);
+  }
+
+  function renderStatus() {
+    var st = officeStatus();
+    var soon = !st.open && st.minutesUntil != null && st.minutesUntil <= 60;
+    document.querySelectorAll("[data-office-status]").forEach(function (el) {
+      var dot = el.querySelector(".dot");
+      var txt = el.querySelector("[data-status-text]");
+      if (dot) { dot.classList.toggle("dot--off", !st.open && !soon); dot.classList.toggle("dot--soon", soon); }
+      if (txt) txt.textContent = statusText(st);
+    });
+  }
+  renderStatus();
+  setInterval(renderStatus, 60000); // jede Minute aktualisieren
 
   /* ---------- Vorher/Nachher ---------- */
   document.querySelectorAll(".ba__frame").forEach(function (frame) {
